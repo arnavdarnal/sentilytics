@@ -1,1 +1,500 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*Light mode*/
+:root {
+  --bg: #B7C8CC;        
+
+}
+
+/*Dark Mode*/
+body.dark-mode{
+    --bg:#172632;
+}
+ .iconn{
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+body {
+    background: var(--bg);
+    color: #1e293b;
+    padding-bottom: 2rem;
+}
+
+
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: #736A82;
+    position: fixed;
+    top: 0;  
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    padding-top: 7rem; 
+}
+
+/*Sidebar*/
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color:white;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: white;
+    background: #92769b;
+    border-left: 4px solid #4f46e5;
+}
+
+/* Top Header Styles */
+.top-header {
+    height: 90px;
+    background: #1E2C53;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 10px;
+    display: flex;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 10;
+  
+}
+
+/*Sentilytics logo*/
+.logo{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+     flex-direction: row;
+}
+
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    object-fit: cover;
+    
+}
+
+.logo h1{
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    background-color: #1E2C53;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 60px 0 0 240px; 
+    padding: 2rem;
+
+}
+
+/* Hero Slider */
+.hero-slider {
+    height: 200px;
+    border-radius: 12px;
+    display: flex;
+    margin-top: 59px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-left: -60px;
+    width: calc(100vw - 261px);
+    
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Upload Card */
+.upload {
+    background: #fff;
+    padding: 2.5rem 5rem;
+    
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-left: 50px;
+    width: calc(80vw - 200px);
+
+    box-sizing: border-box;
+}
+
+.upload h2{
+    font-family: Verdana;
+}
+
+.upload p {
+    color: #64748b;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.container{
+    margin: 0 auto;
+    align-items: center;
+}
+.drop-zone {
+    border: 2px  #919aa5;
+    background-color: rgb(189, 189, 189);
+    width: 100%;
+}
+
+.drop-zone h3{
+    color: black;
+}
+
+
+.drop-zone:hover {
+    border-color: #4f46e5;
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Button */
+.btn {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+.btn:hover {
+    background: #4338ca;
+}
+
+footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+
+
+
+
+/*Registration page*/
+
+.registration-page .page {
+  display: flex;
+}
+
+.registration-page .main-content {
+  margin-left: 370px;
+  margin-top: 60px;
+}
+
+.registration-page .container {
+  display: flex;
+  padding: 50px;
+  width: 100%;
+  background-color:#dfdac6;
+  border: 2px solid rgb(196, 155, 106);
+  border-radius: 10%;
+  width: 90%;
+ 
+}
+
+.registration-page .form-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  padding-left: 0px;
+}
+
+.registration-page .form-box h1 {
+  margin-bottom: 50px;
+}
+
+.registration-page form {
+  width: 540px;
+}
+
+.registration-page h1{
+    margin-bottom: 20px;
+}
+
+.registration-page form input {
+  margin-bottom: 15px;
+  padding: 20px;
+  width: 540px;     
+  height: 35px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registration-page form button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.registration-page form button:hover {
+  background: #0056b3;
+}
+
+
+
+
+
+/*TEAM page*/
+
+* {
+  margin: 0;
+  padding: 0; 
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+}
+
+
+/* TITLE */
+.main-content {
+  margin-left: 240px;   
+  padding-top: 40px;    
+  padding-left: 30px;  
+  padding-right: 30px;
+}
+
+.title {
+  padding: 40px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: #cf0000;
+  font-size: 40px;
+  padding-top: 90px;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  gap: 20px;
+}
+
+/*Image Gallery*/
+.card {
+  flex: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 350px;
+  background:#888a80;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+/*FEEDBACK page*/
+.feedback-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #B7C8CC; 
+  height: 100vh;
+  margin-top: 80px;
+}
+
+.feedback-card {
+  background-color: #b4b39b;
+  padding: 40px;
+  border-radius: 20px;
+  margin-left: 240px;
+  padding-top: 90px;
+  text-align: center;
+  
+}
+
+.feedback-card h2 {
+  margin: 0;
+  font-family: serif;
+  font-size: 2rem;
+  color: #333;
+}
+
+
+/* Inputs and Text area*/
+.feedback-card input, 
+.feedback-card textarea {
+  width: 88%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 13px;
+  box-sizing: border-box; 
+  font-size: 1rem;
+}
+
+
+/* Submit button styling with gradient */
+.feedback-card button {
+  width: 40%;
+  padding: 12px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(to right, #6a11cb, #ff3f9f);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.feedback-card button:hover {
+  opacity: 0.9;
+}
+ 
+
+
+
+/*HAMBURGER BUTTON IN DESKTOP*/
+.hamburger{
+  display: none;
+}
+
+
+/*TABLET*/
+
+@media (max-width: 1300px)
+{
+  .sidebar{
+    width: 18%;
+  }
+  .hero-slider {
+    width: calc(100% - 261px);
+    margin-left: 0;
+  }
+  .card{
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  gap: 10px;
+  width: 400px;
+  }
+}
+  
+
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+.sidebar{
+  display: none;
+}
+
+  /* remove all left spacing caused by sidebar */
+  .container,
+  .main-content,
+  .registration-page .main-content,
+  .feedback-card {
+    margin-left: 0 !important;
+  }
+
+  /* stack grid */
+  .grid {
+    flex-direction: column;
+  }
+
+  /* images fit screen */
+  .card img {
+    height: 200px;
+    width: 100%;
+  }
+
+  /* forms fit screen */
+  .registration-page form,
+  .registration-page form input {
+    width: 100%;
+  }
+
+  /* hero + upload full width */
+  .hero-slider,
+  .upload {
+    width: 100%;
+    margin-left: 0;
+  }
+
+.feedback-card h2 {
+  
+  font-size: 26px;
+
+}
+
+}
+
 
