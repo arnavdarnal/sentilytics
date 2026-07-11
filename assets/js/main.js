@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.querySelector('.sidebar');
 
     if (hamburger && sidebar) {
-        hambuger.addEventListener('click', () => {
+        hamburger.addEventListener('click', () => {
             sidebar.style.display = sidebar.style.display === 'block' ? '' : 'block';
         });
         document.addEventListener('click', (e) => {
@@ -114,7 +114,7 @@ function initDashboard(uploadSection) {
                 results.push({ name: file.name, score: sentiment.score });
             } catch (err) {
                 console.error(err);
-                resultsEl.innerHTML = '<p>Failed to analyze sentiment for ${file.name}</p>';
+                resultsEl.innerHTML = `<p>Failed to analyze sentiment for ${file.name}</p>`;
             }
         }
 
@@ -147,7 +147,7 @@ function initDashboard(uploadSection) {
             summaryItem.className = 'result-item';
             summaryItem.innerHTML = `
                 <h3>Combined Summary</h3>
-                <p>${collectiveSummary}</p>
+                <p>${summary}</p>
             `;
             resultsEl.appendChild(summaryItem);
         } catch (err) {
