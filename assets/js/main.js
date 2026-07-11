@@ -1,3 +1,5 @@
+import {analyzeSentiment, summarizeText} from './inference.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.light').forEach(btn =>
         btn.addEventListener('click', () => document.body.classList.remove('dark-mode'))
@@ -38,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initDashboard(uploadSection) {
     const MAX_FILES = 5;
-    let uploadFiles = [];
+    let uploadedFiles = [];
 
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.querySelector('.drop-zone');
@@ -93,6 +95,69 @@ function initDashboard(uploadSection) {
         });
     }
 
+    async function runAnalysis() {
+        resultsEl.innerHTML = 'Processing files...';
+
+        const updateProgress = (p) => {
+            statusEl.textContent = `AI model loading: ${p}%`;
+        };
+
+        let combinedText = [];
+        let results = [];
+
+        for (const file of uploadedFiles) {
+            const text = await file.text();
+            combinedText.push(text);
+
+            try {
+                const sentiment = await analyzeSentiment(text, (p) => statusEl.textContent = `Analyzing: ${p}%`);
+                results.push({ name: file.name, score: sentiment.score });
+            } catch (err) {
+                console.error(err);
+                resultsEl.innerHTML = '<p>Failed to analyze sentiment for ${file.name}</p>';
+            }
+        }
+
+        resultsEl.innerHTML = `
+            <table id="sentimentTable" border="1">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>File</th>
+                        <th id="sortScore" style="cursor:pointer;">Sentiment Score (Click to Sort)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${results.map((res, i) => `
+                        <tr>
+                            <td>${i + 1}</td>
+                            <td>${res.name}</td>
+                            <td class="score-val">${res.score}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>`;
+
+        resultsEl.innerHTML += 'Generating collective summary...';
+
+        try {
+            const summary = await summarizeText(combinedText.join('\n\n'), (p) => statusEl.textContent = `Summarizing: ${p}%`);
+
+            const summaryItem = document.createElement('div');
+            summaryItem.className = 'result-item';
+            summaryItem.innerHTML = `
+                <h3>Combined Summary</h3>
+                <p>${collectiveSummary}</p>
+            `;
+            resultsEl.appendChild(summaryItem);
+        } catch (err) {
+            console.error(err);
+            resultsEl.innerHTML += `<p>Failed to generate collective summary.</p>`;
+        }
+
+        statusEl.textContent = 'Analysis complete.';
+    }
+    
     function addFiles(fileList) {
         const txtFiles = Array.from(fileList).filter(f => f.name.toLowerCase().endsWith('.txt'));
         if (txtFiles.length === 0) {
