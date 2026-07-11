@@ -5,17 +5,16 @@
     font-family: sans-serif;
 }
 
-/*Light mode*/
 :root {
   --bg: #B7C8CC;        
-
 }
 
 /*Dark Mode*/
 body.dark-mode{
     --bg:#172632;
 }
- .iconn{
+
+.iconn{
   position: fixed;
   top: 15px;
   right: 15px;
@@ -31,8 +30,8 @@ body {
     background: var(--bg);
     color: #1e293b;
     padding-bottom: 2rem;
+    font-family: Arial, sans-serif;
 }
-
 
 .sidebar {
     width: 240px;
@@ -79,7 +78,6 @@ body {
     display: flex;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     z-index: 10;
-  
 }
 
 /*Sentilytics logo*/
@@ -87,7 +85,7 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
-     flex-direction: row;
+    flex-direction: row;
 }
 
 .logo img{
@@ -95,7 +93,6 @@ body {
     height: 45px;
     border-radius: 100%;
     object-fit: cover;
-    
 }
 
 .logo h1{
@@ -107,11 +104,8 @@ body {
     letter-spacing: 0.5px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 60px 0 0 240px; 
-    padding: 2rem;
-
+.drop-zone-inner {
+  text-align: center;
 }
 
 /* Hero Slider */
@@ -126,9 +120,16 @@ body {
     text-align: center;
     margin-left: -60px;
     width: calc(100vw - 261px);
-    
 }
 
+
+.container {
+    margin-top: 60px;
+    margin-left: 240px;
+    margin-right: 0;
+    padding: 2rem;
+    box-sizing: border-box;
+}
 .slide {
     width: 100%;
     height: 100%;
@@ -147,18 +148,14 @@ body {
     display: block;
 }
 
-
 /* Upload Card */
 .upload {
     background: #fff;
     padding: 2.5rem 5rem;
-    
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
-    margin-left: 50px;
-    width: calc(80vw - 200px);
-
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -171,20 +168,16 @@ body {
     margin: 0.5rem 0 1.5rem;
 }
 
-.container{
-    margin: 0 auto;
-    align-items: center;
-}
 .drop-zone {
-    border: 2px  #919aa5;
+    border: 2px solid #919aa5;
     background-color: rgb(189, 189, 189);
     width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 .drop-zone h3{
     color: black;
 }
-
 
 .drop-zone:hover {
     border-color: #4f46e5;
@@ -206,7 +199,6 @@ body {
     cursor: pointer;
 }
 
-
 .btn:hover {
     background: #4338ca;
 }
@@ -220,31 +212,35 @@ footer {
 
 
 
-
-/*Registration page*/
-
+/*Registration Page*/
 .registration-page .page {
   display: flex;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .registration-page .main-content {
-  margin-left: 370px;
-  margin-top: 60px;
+  margin-left: 250px;
+  margin-top: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .registration-page .container {
   display: flex;
   padding: 50px;
-  width: 100%;
-  background-color:#dfdac6;
+  width: 90%;
+  max-width: none;
+  margin: 0 auto;
+  background-color: #dfdac6;
   border: 2px solid rgb(196, 155, 106);
   border-radius: 10%;
-  width: 90%;
- 
+  box-sizing: border-box;
 }
 
 .registration-page .form-box {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -252,27 +248,31 @@ footer {
   align-items: center;
   padding: 50px;
   padding-left: 0px;
+  box-sizing: border-box;
+}
+
+.registration-page form {
+  width: 100%;
+  max-width: 540px;
+  box-sizing: border-box;
+}
+
+.registration-page form input {
+  margin-bottom: 15px;
+  padding: 20px;
+  width: 100%;
+  height: 35px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .registration-page .form-box h1 {
   margin-bottom: 50px;
 }
 
-.registration-page form {
-  width: 540px;
-}
-
 .registration-page h1{
     margin-bottom: 20px;
-}
-
-.registration-page form input {
-  margin-bottom: 15px;
-  padding: 20px;
-  width: 540px;     
-  height: 35px; 
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .registration-page form button {
@@ -289,24 +289,7 @@ footer {
   background: #0056b3;
 }
 
-
-
-
-
 /*TEAM page*/
-
-* {
-  margin: 0;
-  padding: 0; 
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial;
-}
-
-
-/* TITLE */
 .main-content {
   margin-left: 240px;   
   padding-top: 40px;    
@@ -341,8 +324,6 @@ body {
   display: block;
 }
 
-
-
 /*FEEDBACK page*/
 .feedback-container {
   display: flex;
@@ -361,7 +342,6 @@ body {
   margin-left: 240px;
   padding-top: 90px;
   text-align: center;
-  
 }
 
 .feedback-card h2 {
@@ -370,7 +350,37 @@ body {
   font-size: 2rem;
   color: #333;
 }
+.feedback-card select {
+  width: 88%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-radius: 13px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: none;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #6a11cb 50%),
+                     linear-gradient(135deg, #6a11cb 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+                        calc(100% - 15px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
 
+.feedback-card select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #6a11cb33;
+}
+
+.feedback-card select option {
+  color: #333;
+  background-color: white;
+}
 
 /* Inputs and Text area*/
 .feedback-card input, 
@@ -382,7 +392,6 @@ body {
   box-sizing: border-box; 
   font-size: 1rem;
 }
-
 
 /* Submit button styling with gradient */
 .feedback-card button {
@@ -400,18 +409,78 @@ body {
 .feedback-card button:hover {
   opacity: 0.9;
 }
- 
-
-
 
 /*HAMBURGER BUTTON IN DESKTOP*/
 .hamburger{
   display: none;
 }
 
+/* ===========================
+        404 PAGE (desktop default)
+=========================== */
+.error-container{
+    margin-left: 240px;
+    margin-top: 90px;
+    min-height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.error-image{
+    width: 280px;
+    height: 280px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #1E2C53;
+}
+
+.error-image img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.error-code{
+    font-size: 8rem;
+    font-weight: 900;
+    color: #1E2C53;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+.error-text{
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 35px;
+}
+
+.home-btn{
+    text-decoration: none;
+    background: #1E2C53;
+    color: white;
+    padding: 14px 35px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.home-btn:hover{
+    background: #324b87;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(30,44,83,0.3);
+}
 
 /*TABLET*/
-
 @media (max-width: 1300px)
 {
   .sidebar{
@@ -421,15 +490,42 @@ body {
     width: calc(100% - 261px);
     margin-left: 0;
   }
+
+
+.upload {
+  margin-left: 0;
+  width: 100%;
+}
+
+.container {
+  margin-left: 18%;
+  width: 82%;
+  max-width: none;
+  padding: 1rem;
+  box-sizing: border-box;
+}
   .card{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 400px;
+  }
+ .grid {
   display: grid;
-  grid-template-columns: 1fr, 1fr;
-  gap: 10px;
-  width: 400px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+
+  }
+  .card img {
+    height: 250px;
   }
 }
-  
 
+  .registration-page .main-content {
+    margin-left: 18%;
+  }
+
+  
 @media (max-width: 768px) {
 
   .hamburger {
@@ -453,15 +549,13 @@ body {
   .sidebar.active {
     transform: translateX(0);
   }
-.sidebar{
-  display: none;
-}
 
   /* remove all left spacing caused by sidebar */
   .container,
   .main-content,
   .registration-page .main-content,
-  .feedback-card {
+  .feedback-card,
+  .error-container {
     margin-left: 0 !important;
   }
 
@@ -489,12 +583,21 @@ body {
     margin-left: 0;
   }
 
-.feedback-card h2 {
-  
-  font-size: 26px;
+  .feedback-card h2 {
+    font-size: 26px;
+  }
 
+  /* 404 mobile overrides */
+  .error-image{
+      width: 200px;
+      height: 200px;
+  }
+
+  .error-code{
+      font-size: 5rem;
+  }
+
+  .error-text{
+      font-size: 1.1rem;
+  }
 }
-
-}
-
-
