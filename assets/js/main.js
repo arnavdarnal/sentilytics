@@ -188,22 +188,31 @@ function initDashboard(uploadSection) {
         function renderFileList() {
             if (uploadedFiles.length === 0) {
                 fileListEl.innerHTML = '';
-                if (uploadBtn) {
-                    uploadBtn.style.display = 'none';
-                }
+                if (uploadBtn) uploadBtn.style.display = 'none';
                 return;
             }
-
-            const items = uploadedFiles.map((f, i) => `
-                <div class="file-item">
-                    <span class="file-name">📄 ${f.name}</span>
-                    <span class="file-size">${formatSize(f.size)}</span>
-                    <button class="remove-btn" onclick="removeFile(${i})" title="Remove">✕</button>
-                </div>`).join('');
-            fileListEl.innerHTML = `<p class="file-count">${uploadedFiles.length} / ${MAX_FILES} file(s) selected</p>${items}`;
-            if (uploadBtn) {
-                uploadBtn.style.display = 'inline-block';
-            }
+        
+            fileListEl.innerHTML = `<p>${uploadedFiles.length} / ${MAX_FILES} file(s) selected</p>`;
+            
+            uploadedFiles.forEach((f, i) => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.innerHTML = `<span>📄 ${f.name}</span>`;
+        
+                const btn = document.createElement('button');
+                btn.textContent = '✕';
+                
+                btn.addEventListener('click', () => {
+                    uploadedFiles.splice(i, 1);
+                    renderFileList(); // Refresh the list
+                    resultsEl.innerHTML = ''; // Clear old results
+                });
+                
+                item.appendChild(btn);
+                fileListEl.appendChild(item);
+            });
+            
+            if (uploadBtn) uploadBtn.style.display = 'inline-block';
         }
 
         function formatSize(bytes) {
