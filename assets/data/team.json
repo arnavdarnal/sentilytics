@@ -1,1 +1,22 @@
-
+[
+    {
+        "name": "Abhilasha Ghimire",
+        "role": "Client-Side Validation Specialist",
+        "image": ""
+    },
+    {
+        "name": "Arnav Darnal",
+        "role": "AI Integration Engineer",
+        "image": ""
+    },
+    {
+        "name": "Arya Poudel",
+        "role": "UI/UX Designer",
+        "image": ""
+    },
+    {
+        "name": "Shristi Rimal",
+        "role": "JavaScript & AJAX Developer",
+        "image": ""
+    }
+]
