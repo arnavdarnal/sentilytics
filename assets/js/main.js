@@ -23,5 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the team grid if it exists on the page
     const teamGrid = document.querySelector('.grid');
-    if (teamGrid) initTeamGrid(teamGrid);
+    if (grid) initTeamGrid(grid);
 });
