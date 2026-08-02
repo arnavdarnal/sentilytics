@@ -601,3 +601,38 @@ footer {
       font-size: 1.1rem;
   }
 }
+
+
+.result-section {
+  margin-top: 20px;
+  display: none;
+}
+
+.result-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.result-item {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.analyze-more-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.analyze-more-btn:hover {
+  background: #1f54b5;
+}
