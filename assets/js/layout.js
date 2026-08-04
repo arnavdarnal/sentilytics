@@ -16,8 +16,8 @@ async function loadPartial(selector, filePath) {
 // Initialize global navigation, layout structure, and theme toggling
 export async function  initLayout() {
      // Load header and footer partials asynchronously
-    await loadPartial('#header', '../..partials/header.html');
-    await loadPartial('#footer', '../..partials/footer.html');
+    await loadPartial('#header', '../../partials/header.html');
+    await loadPartial('#footer', '../../partials/footer.html');
     
     // Add event listeners to switch between light and dark modes
     document.querySelectorAll('.light').forEach(btn =>
