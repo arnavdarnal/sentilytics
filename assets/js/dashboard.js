@@ -1,16 +1,4 @@
 
-
-Skip to content
-Using Gmail with screen readers
-1 of 565
-dashboard.js
-Inbox
-Summarise this email
-
-Arnav Darnal <darnalarnav.05@gmail.com>
-18:53 (1 hour ago)
-to me
-
 // Initialize the dashboard interface and set up event listeners for file handling and analysis
 export function initDashboard(uploadSection) {
     const MAX_FILES = 5;
