@@ -14,7 +14,7 @@ async function loadPartial(selector, filePath) {
 }
 
 // Initialize global navigation, layout structure, and theme toggling
-export function initLayout() {
+export async function  initLayout() {
      // Load header and footer partials asynchronously
     await loadPartial('#header', '/partials/header.html');
     await loadPartial('#footer', '/partials/footer.html');
