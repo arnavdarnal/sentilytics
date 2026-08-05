@@ -9,8 +9,7 @@ export function initDashboard(uploadSection) {
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.querySelector('.drop-zone');
     const uploadBtn = document.querySelector('.btn[type="submit"]');
-    const chooseBtn = document.querySelector('.choose-btn');
-
+   
     const $resultsSection = $('#resultSection');
     const $uploadSection = $('#uploadSection');
 
