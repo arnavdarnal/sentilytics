@@ -1,3 +1,4 @@
+import {analyzeSentiment, summarizeText} from './inference.js';
 
 // Initialize the dashboard interface and set up event listeners for file handling and analysis
 export function initDashboard(uploadSection) {
@@ -10,6 +11,12 @@ export function initDashboard(uploadSection) {
     const uploadBtn = document.querySelector('.btn[type="submit"]');
     const chooseBtn = document.querySelector('.choose-btn');
 
+    const $resultsSection = $('#resultSection');
+    const $uploadSection = $('#uploadSection');
+
+    // Hide the results section initially
+    $resultsSection.hide();
+    
     // Create and configure dynamic elements for status, file lists, and results
     const statusEl = document.createElement('p');
     statusEl.className = 'status-msg';
@@ -25,6 +32,19 @@ export function initDashboard(uploadSection) {
     const resultsContainer = document.querySelector('.result-container');
     if (resultsContainer) resultsContainer.appendChild(resultsEl);
 
+    // Handle reset functionality when the user clicks the "Analyze More" button
+    $resultsSection.on('click', '#analyzeMoreBtn', function(e) {
+        uploadedFiles = [];
+        fileListEl.innerHTML = '';
+        if (fileInput) fileInput.value = '';
+        if (uploadBtn) uploadBtn.style.display = 'none';
+        statusEl.textContent = '';
+        resultsEl.innerHTML = '';
+
+        $resultsSection.hide();
+        $uploadSection.show();
+    });
+    
     // Trigger file input click when drop zone or choose button is clicked
     if (dropZone && fileInput) {
         dropZone.addEventListener('click', () => fileInput.click());
@@ -54,6 +74,11 @@ export function initDashboard(uploadSection) {
         uploadBtn.addEventListener('click', runAnalysis);
     }
 
+    // Ensure the results section has a placeholder if no children exist
+    if ($resultsSection.children().length === 0) {
+        $resultsSection.append('');
+    }
+    
     // Set up drag-and-drop event listeners for the drop zone to handle file uploads
     if (dropZone) {
         dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragging'); });
@@ -65,6 +90,165 @@ export function initDashboard(uploadSection) {
         });
     }
 
+    // Execute the analysis pipeline for all uploaded files concurrently
+    async function runAnalysis() {
+        $uploadSection.hide();
+        $resultsSection.show();
+
+        resultsEl.innerHTML = '<p>Processing files...</p>';
+
+        // Update progress status during analysis
+        const updateProgress = (p) => {
+            statusEl.textContent = `AI model loading: ${p}%`;
+        };
+
+        let combinedText = [];
+        let sentimentResults = [];
+        let sentimentFailures = [];
+
+        // Map each file to an asynchronous sentiment analysis task
+        const analysisPromises = uploadedFiles.map(async (file) => {
+            try {
+                const text = await file.text();
+                combinedText.push(text);
+
+                const sentiment = await analyzeSentiment(text, updateProgress);
+
+                if (sentiment.label === 'error') {
+                    sentimentFailures.push(file.name);
+                } else {
+                    sentimentResults.push({ name: file.name, score: sentiment.score });
+                }
+            } catch (err) {
+                console.error(`Sentiment analysis failed for ${file.name}:`, err);
+                sentimentFailures.push(file.name);
+                try {
+                    const text = await file.text();
+                    combinedText.push(text);
+                } catch (readErr) {
+                    console.error(`Could not read file text for ${file.name}`);
+                }
+            }
+        });
+
+        // Wait for all sentiment analysis tasks to complete before proceeding
+        await Promise.all(analysisPromises);
+
+        let collectiveSummary = null;
+        let summaryFailed = false;
+
+        // Generate a collective summary if there is any text to summarize
+        if (combinedText.length > 0) {
+            try {
+                statusEl.textContent = 'Generating summary...';
+                collectiveSummary = await summarizeText(combinedText.join('\n\n'), updateProgress);
+                if (!collectiveSummary || collectiveSummary.startsWith('Failed') || collectiveSummary.startsWith('No text')) {
+                    summaryFailed = true;
+                }
+            } catch (err) {
+                console.error('Summary generation failed:', err);
+                summaryFailed = true;
+            }
+        } else {
+            summaryFailed = true;
+        }
+
+        // Handle total failure case where neither sentiment scores nor summary could be generated
+        if (sentimentResults.length === 0 && summaryFailed) {
+            resultsEl.innerHTML = `
+                <div class="error-message">
+                    <p>The analysis pipeline failed. Neither sentiment scores nor the summary could be generated.</p>
+                </div>
+            `;
+            statusEl.textContent = 'Analysis failed.';
+            return;
+        }
+
+        let htmlContent = '';
+
+        // Display sentiment scores in a sortable table if any results were generated
+        if (sentimentResults.length > 0) {
+            htmlContent += `
+                <div class="result-item">
+                    <h3>Sentiment Scores</h3>
+                    <table id="sentimentTable">
+                        <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>File</th>
+                                <th id="sortScore">Sentiment Score ↕ (Click to Sort)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${sentimentResults.map((res, i) => `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td>${res.name}</td>
+                                    <td class="score-val">${res.score}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        } 
+
+        // Append an error note for any files that failed to generate sentiment scores
+        if (sentimentFailures.length > 0) {
+            htmlContent += `
+                <div class="error-note">
+                    <p><strong>Note:</strong> Could not generate sentiment scores for the following file(s): ${sentimentFailures.join(', ')}</p>
+                </div>
+            `;
+        }
+
+        // Append the collective summary to the results if it was successfully generated, otherwise display an error note
+        if (!summaryFailed && collectiveSummary) {
+            htmlContent += `
+                <div class="result-item">
+                    <h3>Combined Summary</h3>
+                    <p>${collectiveSummary}</p>
+                </div>
+            `;
+        } else {
+            htmlContent += `
+                <div class="error-note">
+                    <p><strong>Note:</strong> Failed to generate collective summary.</p>
+                </div>
+            `;
+        }
+
+        htmlContent += `
+            <button id="analyzeMoreBtn" class="btn">Analyze More Files</button>
+        `;
+
+        resultsEl.innerHTML = htmlContent;
+        statusEl.textContent = 'Analysis complete.';
+
+        // Set up sorting functionality for the sentiment score table
+        let sortAscending = true;
+        $('#sortScore').off('click').on('click', function() {
+            const $tbody = $('#sentimentTable tbody');
+            const $rows = $tbody.find('tr').toArray();
+
+            $rows.sort((a, b) => {
+                const scoreA = parseFloat($(a).find('.score-val').text());
+                const scoreB = parseFloat($(b).find('.score-val').text());
+
+                return sortAscending ? scoreA - scoreB : scoreB - scoreA;
+            });
+
+            sortAscending = !sortAscending;
+            $(this).text(`Sentiment Score ${sortAscending ? '▲' : '▼'} (Click to Sort)`);
+
+            $tbody.empty();
+            $rows.forEach((row, index) => {
+                $(row).find('td').first().text(index + 1);
+                $tbody.append(row);
+            });
+        });
+    }
+    
     // Validate and process newly added files, enforcing the maximum file limit and file type restrictions
     function addFiles(fileList) {
         const txtFiles = Array.from(fileList).filter(f => f.name.toLowerCase().endsWith('.txt'));
