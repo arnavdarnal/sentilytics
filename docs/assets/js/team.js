@@ -19,7 +19,7 @@ export async function initTeamGrid(teamGrid) {
             card.classList.add('team-card');
 
             // Use a fallback image if the member's image is missing or empty
-            const img = member.image && member.image.trim() !== '' ? member.image : 'assets/images/default.png';
+            const img = member.image && member.image.trim() !== '' ? member.image : 'assets/img/default.png';
 
             // Set the inner HTML of the card with the member's details
             card.innerHTML = `
