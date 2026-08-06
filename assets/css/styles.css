@@ -488,129 +488,8 @@ body.feedback-page .nav-links a[href="feedback.html"] {
     box-shadow: 0 6px 15px rgba(30,44,83,0.3);
 }
 
-/*TABLET*/
-@media (max-width: 1300px)
-{
-  .sidebar{
-    width: 18%;
-  }
-  .hero-slider {
-    width: calc(100% - 261px);
-    margin-left: 0;
-  }
-
-
-.upload {
-  margin-left: 0;
-  width: 100%;
-}
-
-.container {
-  margin-left: 18%;
-  width: 82%;
-  max-width: none;
-  padding: 1rem;
-  box-sizing: border-box;
-}
-  .card{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 400px;
-  }
- .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-
-  }
-  .card img {
-    height: 250px;
-  }
-}
-
-  .registration-page .main-content {
-    margin-left: 18%;
-  }
 
   
-@media (max-width: 768px) {
-
-  .hamburger {
-    display: block;
-    font-size: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    position: fixed;
-    top: 30px;
-    right: 20px;
-    z-index: 9999;
-  }
-
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    display: none;
-  }
-
-  .sidebar.active {
-    transform: translateX(0);
-  }
-
-  /* remove all left spacing caused by sidebar */
-  .container,
-  .main-content,
-  .registration-page .main-content,
-  .feedback-card,
-  .error-container {
-    margin-left: 0 !important;
-  }
-
-  /* stack grid */
-  .grid {
-    flex-direction: column;
-  }
-
-  /* images fit screen */
-  .card img {
-    height: 200px;
-    width: 100%;
-  }
-
-  /* forms fit screen */
-  .registration-page form,
-  .registration-page form input {
-    width: 100%;
-  }
-
-  /* hero + upload full width */
-  .hero-slider,
-  .upload {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .feedback-card h2 {
-    font-size: 26px;
-  }
-
-  /* 404 mobile overrides */
-  .error-image{
-      width: 200px;
-      height: 200px;
-  }
-
-  .error-code{
-      font-size: 5rem;
-  }
-
-  .error-text{
-      font-size: 1.1rem;
-  }
-}
-
 
 .result-section {
   margin-top: 20px;
@@ -644,4 +523,96 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 
 .analyze-more-btn:hover {
   background: #1f54b5;
+}
+
+/* Hide the actual checkbox, keep only the label visible */
+.menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    .hamburger {
+        display: block;
+        font-size: 32px;
+        color: white;
+        position: fixed;
+        top: 25px;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        background: #1E2C53;
+        padding: 6px 12px;
+        border-radius: 6px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    .menu-toggle:checked ~ .sidebar {
+        transform: translateX(0);
+    }
+
+    /* Remove all left spacing that assumed a visible sidebar */
+    .container,
+    .main-content,
+    .registration-page .main-content,
+    .feedback-card,
+    .error-container,
+    #footer {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .hero-slider {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .top-header {
+        padding: 0 1rem;
+    }
+
+    .grid {
+        flex-direction: column;
+    }
+
+    .team-card img {
+        height: 220px;
+    }
+
+    .upload {
+        padding: 2rem 1.5rem;
+    }
+
+    .registration-page .container {
+        flex-direction: column;
+        width: 95%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-image {
+        width: 200px;
+        height: 200px;
+    }
+    .error-code {
+        font-size: 5rem;
+    }
+    .error-text {
+        font-size: 1.1rem;
+    }
+    .feedback-card select,
+    .feedback-card input,
+    .feedback-card textarea {
+        width: 100%;
+    }
 }
