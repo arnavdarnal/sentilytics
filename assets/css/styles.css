@@ -206,8 +206,8 @@ body {
 #footer {
     text-align: center;
     color: #64748b;
-    font-size: 0.85rem;
-    margin-top: 2rem;
+    width: 100%;
+    margin: 2rem auto 0;;
 }
 
 
