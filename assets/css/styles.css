@@ -34,6 +34,7 @@ body {
 }
 
 
+
 .sidebar {
     width: 240px;
     height: 100vh;
@@ -59,6 +60,14 @@ body {
     transition: all 0.2s;
 }
 
+body.dashboard-page .nav-links a[href="index.html"],
+body.registration-page .nav-links a[href="registration.html"],
+body.team-page .nav-links a[href="team.html"],
+body.feedback-page .nav-links a[href="feedback.html"] {
+    color: white;
+    background: #92769b;
+    border-left: 4px solid #4f46e5;
+}
 .nav-links a.active, .nav-links a:hover {
     color: white;
     background: #92769b;
