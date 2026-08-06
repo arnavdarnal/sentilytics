@@ -583,10 +583,6 @@ body.feedback-page .nav-links a[href="feedback.html"] {
     grid-template-columns: repeat(2, 1fr); 
   }
 
-    .team-card img {
-        height: 220px;
-    }
-
     .upload {
         padding: 2rem 1.5rem;
     }
@@ -609,9 +605,7 @@ body.feedback-page .nav-links a[href="feedback.html"] {
     .error-text {
         font-size: 1.1rem;
     }
-      .grid {
-    grid-template-columns: 1fr; 
-  }
+   
     .feedback-card select,
     .feedback-card input,
     .feedback-card textarea {
