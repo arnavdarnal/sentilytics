@@ -123,15 +123,14 @@ body.feedback-page .nav-links a[href="feedback.html"] {
     height: 200px;
     border-radius: 12px;
     display: flex;
-    margin-top: 59px;
+    margin-top: -2px;
     overflow: hidden;
     margin-bottom: 2rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
-    margin-left: -60px;
-    width: calc(100vw - 261px);
+    margin-left: -32px;
+    width: calc(100vw - 240px);
 }
-
 
 .container {
     margin-top: 60px;
