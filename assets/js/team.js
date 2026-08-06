@@ -1,5 +1,5 @@
 // Initialize and render the team grid dynamically from JSON data
-export async function initTeamGrid(teamGrid) 
+export async function initTeamGrid(teamGrid) {
     // Exit early if the grid container does not exist
     if (!teamGrid) return;
 
