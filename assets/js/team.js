@@ -1,10 +1,7 @@
 // Initialize and render the team grid dynamically from JSON data
-export async function initTeamGrid() {
-    // Select the team grid container on the page
-    const gridContainer = document.querySelector('.grid');
-
+export async function initTeamGrid(teamGrid) 
     // Exit early if the grid container does not exist
-    if (!gridContainer) return;
+    if (!teamGrid) return;
 
     try {
         // Fetch team data from the JSON file
@@ -14,7 +11,7 @@ export async function initTeamGrid() {
         const teamMembers = await response.json();
 
         // Clear any existing content inside the grid container
-        gridContainer.innerHTML = '';
+        teamGrid.innerHTML = '';
 
         // Loop through each team member and create a card for them
         teamMembers.forEach(member => {
@@ -34,11 +31,11 @@ export async function initTeamGrid() {
             `;
 
             // Append the card to the grid container
-            gridContainer.appendChild(card);
+            teamGrid.appendChild(card);
         });
     } catch (error) {
         // Log the error to the console and display a user-friendly message in the grid container
         console.error("Error initializing team grid:", error);
-        gridContainer.innerHTML = '<p>Failed to load team members. Please try again later.</p>';
+        teamGrid.innerHTML = '<p>Failed to load team members. Please try again later.</p>';
     }
 }
