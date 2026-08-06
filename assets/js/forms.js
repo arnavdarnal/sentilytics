@@ -1,14 +1,14 @@
 // Initialize and handle validation for the user registration form
 export function initRegistrationForm(form) {
+    $('#dob').datepicker();
+    
     form.addEventListener('submit', (e) => {
-        $('#dob').datepicker();
-        
         e.preventDefault();
 
-        const usernameInput = form.getElementById('username').value.trim();
-        const passwordInput = form.getElementById('password').value.trim();
-        const emailInput = form.getElementById('email').value.trim();
-        const dateInput = form.getElementById('dob').value.trim();
+        const usernameInput = form.querySelector('#username').value.trim();
+        const passwordInput = form.querySelector('#password').value.trim();
+        const emailInput = form.querySelector('#email').value.trim();
+        const dateInput = form.querySelector('#dob').value.trim();
 
         // Validate username length
         if (usernameInput.length < 3) {
@@ -46,8 +46,8 @@ export function initFeedbackForm(form) {
         e.preventDefault();
 
         // Collect inputs and extract name and email values
-        const name = form.getElementById('name').value.trim();
-        const email = form.getElementById('email').value.trim();
+        const name = form.querySelector('#name').value.trim();
+        const email = form.querySelector('#email').value.trim();
 
         // Ensure name is provided
         if (!name) {
