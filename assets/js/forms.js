@@ -23,13 +23,13 @@ export function initRegistrationForm(form) {
         }
 
         // Validate email format
-        if (!emailInput.value.includes('@')) {
+        if (!emailInput.includes('@')) {
             alert('Please enter a valid email address.');
             return;
         }
         
         // Ensure date of birth is provided
-        if (!dateInput.value) {
+        if (!dateInput) {
             alert('Please enter your date of birth.');
             return;
         }
