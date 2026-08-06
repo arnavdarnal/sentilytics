@@ -11,7 +11,7 @@
 
 /*Dark Mode*/
 body.dark-mode{
-    --bg:#172632;
+    --bg:#45565a;   
 }
 
 .iconn{
@@ -308,7 +308,7 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 .title {
   padding: 40px;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  color: #cf0000;
+  color: #e0dfc6;
   font-size: 40px;
   padding-top: 90px;
   text-align: center;
