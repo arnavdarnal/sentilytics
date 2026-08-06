@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script type="module" src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div id="header"></div>
@@ -23,7 +24,7 @@
             </div>
         </div>
 
-        <section class="upload">
+        <section id="uploadSection" class="upload">
             <h2><i class="fa-solid fa-cloud-arrow-up"></i> Upload Files for Analysis</h2>
             <p>Upload your .txt files to get started with sentiment analysis and summarization.</p>
 
@@ -42,7 +43,7 @@
             <button type="submit" class="btn">Upload</button>
         </section>
        
-<section id="resultSection" class="hidden result-section">
+<section id="resultSection" class="result-container">
 <h2>Results: </h2>
   <div class="result-card">
 
