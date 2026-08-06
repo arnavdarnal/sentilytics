@@ -312,11 +312,11 @@ body {
 }
 
 /*Image Gallery*/
-.card {
+.team-card {
   flex: 1;
 }
 
-.card img {
+.team-card img {
   width: 100%;
   height: 350px;
   background:#888a80;
