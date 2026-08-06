@@ -206,11 +206,8 @@ body {
 #footer {
     text-align: center;
     color: #64748b;
-    width: 100%;
-    margin: 2rem auto 0;;
-}
-p {
-    text-align: left;
+    width: calc(100% - 240px);
+    margin: 2rem 0 0 240px;
 }
 
 
