@@ -28,8 +28,7 @@ export function initDashboard(uploadSection) {
     uploadSection.appendChild(statusEl);
     uploadSection.appendChild(fileListEl);
 
-    const resultsContainer = document.querySelector('.result-container');
-    if (resultsContainer) resultsContainer.appendChild(resultsEl);
+    $resultsSection.append(resultsEl);
 
     // Handle reset functionality when the user clicks the "Analyze More" button
     $resultsSection.on('click', '#analyzeMoreBtn', function(e) {
