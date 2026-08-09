@@ -101,6 +101,10 @@ export function initDashboard(uploadSection) {
             analysisStatusEl.textContent = `AI model loading: ${p}%`;
         };
 
+        const updateSummaryStatus = (msg) => {
+            analysisStatusEl.textContent = msg;
+        };
+        
         let combinedText = [];
         let sentimentResults = [];
         let sentimentFailures = [];
@@ -140,7 +144,7 @@ export function initDashboard(uploadSection) {
         if (combinedText.length > 0) {
             try {
                 analysisStatusEl.textContent = 'Generating summary...';
-                collectiveSummary = await summarizeText(combinedText.join('\n\n'), updateProgress);
+                collectiveSummary = await summarizeText(combinedText.join('\n\n'), updateProgress, updateSummaryStatus);
                 if (!collectiveSummary || collectiveSummary.startsWith('Failed') || collectiveSummary.startsWith('No text')) {
                     summaryFailed = true;
                 }
@@ -313,4 +317,3 @@ export function initDashboard(uploadSection) {
         }
     }
 }
-
