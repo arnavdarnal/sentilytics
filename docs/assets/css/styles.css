@@ -120,12 +120,12 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 
 /* Hero Slider */
 .hero-slider {
-    height: 200px;
+    height: 380px;
     border-radius: 12px;
     display: flex;
     margin-top: -2px;
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
     margin-left: -32px;
