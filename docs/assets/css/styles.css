@@ -539,13 +539,18 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 }
 
 @media (max-width: 1024px) {
-    .hamburger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        top: calc((var(--header-height) - 2.375rem) / 2);
-        padding: 0.25rem 0.5rem;
+ .hamburger {
+        display: block;
+        color: white;
+        position: fixed;
+     font-size: 1.5rem;
+top: calc((var(--header-height) - 2.375rem) / 2);
+padding: 0.25rem 0.5rem;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+        background: #1E2C53;
+        border-radius: 6px;
     }
 
     .sidebar {
