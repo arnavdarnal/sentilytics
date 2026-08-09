@@ -25,7 +25,7 @@ export function initDashboard(uploadSection) {
     resultsEl.className = 'results-section';
 
     // Append the dynamic elements to their respective parent containers
-    uploadSection.appendChild(statusEl);
+    document.querySelector('.container').appendChild(statusEl);
     uploadSection.appendChild(fileListEl);
 
     $resultsSection.append(resultsEl);
