@@ -93,11 +93,12 @@ export function initDashboard(uploadSection) {
         $uploadSection.hide();
         $resultsSection.show();
 
-        resultsEl.innerHTML = '<p>Processing files...</p>';
+        resultsEl.innerHTML = '<p class="status-msg" id="analysisStatus"></p>';
+        const analysisStatusEl = document.getElementById('analysisStatus');
 
         // Update progress status during analysis
         const updateProgress = (p) => {
-            statusEl.textContent = `AI model loading: ${p}%`;
+            analysisStatusEl.textContent = `AI model loading: ${p}%`;
         };
 
         let combinedText = [];
@@ -138,7 +139,7 @@ export function initDashboard(uploadSection) {
         // Generate a collective summary if there is any text to summarize
         if (combinedText.length > 0) {
             try {
-                statusEl.textContent = 'Generating summary...';
+                analysisStatusEl.textContent = 'Generating summary...';
                 collectiveSummary = await summarizeText(combinedText.join('\n\n'), updateProgress);
                 if (!collectiveSummary || collectiveSummary.startsWith('Failed') || collectiveSummary.startsWith('No text')) {
                     summaryFailed = true;
@@ -158,10 +159,9 @@ export function initDashboard(uploadSection) {
                     <p>The analysis pipeline failed. Neither sentiment scores nor the summary could be generated.</p>
                 </div>
             `;
-            statusEl.textContent = 'Analysis failed.';
             return;
         }
-
+        
         let htmlContent = '';
 
         // Display sentiment scores in a sortable table if any results were generated
@@ -221,7 +221,6 @@ export function initDashboard(uploadSection) {
         `;
 
         resultsEl.innerHTML = htmlContent;
-        statusEl.textContent = 'Analysis complete.';
 
         // Set up sorting functionality for the sentiment score table
         let sortAscending = true;
