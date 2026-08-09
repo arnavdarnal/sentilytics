@@ -227,7 +227,8 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 .registration-page .page {
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
+  margin-top: var(--header-height);
 }
 
 .registration-page .main-content {
