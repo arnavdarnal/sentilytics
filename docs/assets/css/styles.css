@@ -355,7 +355,7 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   justify-content: center;
   align-items: center;
   padding: 2.5rem;
-  background-color: #b7c8cc;
+  background: var(--bg);
   margin-left: var(--sidebar-width);
   margin-top: var(--header-height);
   min-height: calc(100vh - var(--header-height));
