@@ -58,3 +58,4 @@ export async function initLayout() {
       updateThemeButtons(true);
     });
   });
+}
