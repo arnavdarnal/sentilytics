@@ -17,61 +17,65 @@ async function loadPartial(selector, filePath) {
 
 // Helper function to update theme button visibility
 function updateThemeButtons(isDark) {
-  const lightBtns = document.querySelectorAll('.light');
-  const darkBtns = document.querySelectorAll('.dark');
+  const lightBtns = document.querySelectorAll(".light");
+  const darkBtns = document.querySelectorAll(".dark");
 
-  lightBtns.forEach(btn => btn.style.display = isDark ? 'inline-block' : 'none');
-  darkBtns.forEach(btn => btn.style.display = isDark ? 'none' : 'inline-block');
+  lightBtns.forEach(
+    (btn) => (btn.style.display = isDark ? "inline-block" : "none")
+  );
+  darkBtns.forEach(
+    (btn) => (btn.style.display = isDark ? "none" : "inline-block")
+  );
 }
 
 // Initialize layout components, theme, and toggles
 export async function initLayout() {
   // Load partials first so buttons exist in DOM
-  await loadPartial('#header', 'partials/header.html');
-  await loadPartial('#footer', 'partials/footer.html');
+  await loadPartial("#header", "partials/header.html");
+  await loadPartial("#footer", "partials/footer.html");
 
   // Check initial theme state
-  const isDark = localStorage.getItem('theme') === 'dark';
+  const isDark = localStorage.getItem("theme") === "dark";
   if (isDark) {
-    document.body.classList.add('dark-mode');
+    document.body.classList.add("dark-mode");
   }
   updateThemeButtons(isDark);
 
   // Switch to Light Mode
-  document.querySelectorAll('.light').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
+  document.querySelectorAll(".light").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
       updateThemeButtons(false);
     });
   });
 
   // Switch to Dark Mode
-  document.querySelectorAll('.dark').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
+  document.querySelectorAll(".dark").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
       updateThemeButtons(true);
     });
   });
 
   // Mobile hamburger menu toggle
-  const hamburger = document.getElementById('hamburgerBtn');
-  const sidebar = document.querySelector('.sidebar');
+  const hamburger = document.getElementById("hamburgerBtn");
+  const sidebar = document.querySelector(".sidebar");
 
   if (hamburger && sidebar) {
-    hamburger.addEventListener('click', (e) => {
+    hamburger.addEventListener("click", (e) => {
       e.stopPropagation();
-      sidebar.style.display = sidebar.style.display === 'block' ? '' : 'block';
+      sidebar.style.display = sidebar.style.display === "block" ? "" : "block";
     });
 
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       if (
-        sidebar.style.display === 'block' &&
+        sidebar.style.display === "block" &&
         !sidebar.contains(e.target) &&
         !hamburger.contains(e.target)
       ) {
-        sidebar.style.display = '';
+        sidebar.style.display = "";
       }
     });
   }

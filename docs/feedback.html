@@ -1,47 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentilytics - Feedback</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <script type="module" src="assets/js/main.js"></script>
-</head>
+  </head>
 
-<body class="feedback-page">
+  <body class="feedback-page">
     <div id="header"></div>
     <main>
+      <div class="feedback-container">
+        <div class="feedback-card">
+          <h2>YOUR THOUGHTS</h2>
+          <p>How was your experience?</p>
 
-        <div class="feedback-container">
+          <form>
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Email" required />
 
-            <div class="feedback-card">
+            <select id="experience-rating" required>
+              <option value="" disabled selected>Rate your experience</option>
+              <option value="5">Excellent</option>
+              <option value="4">Good</option>
+              <option value="3">Average</option>
+              <option value="2">Poor</option>
+              <option value="1">Very Poor</option>
+            </select>
 
-                <h2>YOUR THOUGHTS</h2>
-                <p>How was your experience?</p>
-
-                <form>
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Email" required>
-
-                    <select id="experience-rating" required>
-                        <option value="" disabled selected>Rate your experience</option>
-                        <option value="5">Excellent</option>
-                        <option value="4">Good</option>
-                        <option value="3">Average</option>
-                        <option value="2">Poor</option>
-                        <option value="1">Very Poor</option>
-                    </select>
-
-                    <textarea id="feedback" placeholder="Your Feedback" rows="5"></textarea>
-                    <button type="submit">SUBMIT</button>
-                </form>
-
-            </div>
-
+            <textarea
+              id="feedback"
+              placeholder="Your Feedback"
+              rows="5"
+            ></textarea>
+            <button type="submit">SUBMIT</button>
+          </form>
         </div>
-
+      </div>
     </main>
     <div id="footer"></div>
-</body>
+  </body>
 </html>

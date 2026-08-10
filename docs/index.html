@@ -1,50 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentilytics - Home</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
-</head>
-<body class="dashboard-page">
+  </head>
+  <body class="dashboard-page">
     <div id="header"></div>
     <main class="container">
-        <div class="hero-slider">
-            <div class="slide active">
-                <img src="assets/img/hero-1.png" alt="Slide 1">
-            </div>
-            <div class="slide">
-                <img src="assets/img/hero-2.png" alt="Slide 2">
-            </div>
-            <div class="slide">
-                <img src="assets/img/hero-3.png" alt="Slide 3">
-            </div>
+      <div class="hero-slider">
+        <div class="slide active">
+          <img src="assets/img/hero-1.png" alt="Slide 1" />
+        </div>
+        <div class="slide">
+          <img src="assets/img/hero-2.png" alt="Slide 2" />
+        </div>
+        <div class="slide">
+          <img src="assets/img/hero-3.png" alt="Slide 3" />
+        </div>
+      </div>
+
+      <section id="uploadSection" class="upload">
+        <h2>
+          <i class="fa-solid fa-cloud-arrow-up"></i> Upload Files for Analysis
+        </h2>
+        <p>
+          Upload your .txt files to get started with sentiment analysis and
+          summarization.
+        </p>
+
+        <div
+          class="drop-zone"
+          onclick="document.getElementById('fileInput').click()"
+        >
+          <div class="drop-zone-inner">
+            <div class="icon">📄</div>
+            <h3>Drag & drop your files here or click to browse</h3>
+            <p>or click "Choose File" to browse</p>
+            <input type="file" id="fileInput" accept=".txt" hidden />
+          </div>
         </div>
 
-        <section id="uploadSection" class="upload">
-            <h2><i class="fa-solid fa-cloud-arrow-up"></i> Upload Files for Analysis</h2>
-            <p>Upload your .txt files to get started with sentiment analysis and summarization.</p>
+        <button
+          type="button"
+          class="btn"
+          onclick="document.getElementById('fileInput').click()"
+        >
+          Choose File
+        </button>
+        <button type="submit" class="btn">Upload</button>
+      </section>
 
-            <div class="drop-zone" onclick="document.getElementById('fileInput').click()">
-                <div class="drop-zone-inner">
-                    <div class="icon">📄</div>
-                    <h3>Drag & drop your files here or click to browse</h3>
-                    <p>or click "Choose File" to browse</p>
-                    <input type="file" id="fileInput" accept=".txt" hidden>
-                </div>
-            </div>
-
-            <button type="button" class="btn" onclick="document.getElementById('fileInput').click()">
-                Choose File
-            </button>
-            <button type="submit" class="btn">Upload</button>
-        </section>
-       
-<section id="resultSection" class="result-section"></section>
+      <section id="resultSection" class="result-section"></section>
     </main>
-   <div id="footer"></div>
-</body>
+    <div id="footer"></div>
+  </body>
 </html>

@@ -1,43 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sentilytics - Registration</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script type="module" src="assets/js/main.js"></script>
-</head>
-<body class="registration-page">
-
-  <div id="header"></div>
+  </head>
+  <body class="registration-page">
+    <div id="header"></div>
     <main>
-        <div class="page">
-            <div class="main-content">
-                <div class="container">
+      <div class="page">
+        <div class="main-content">
+          <div class="container">
+            <div class="form-box">
+              <h1>𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐓𝐈𝐎𝐍</h1>
 
-                    <div class="form-box">
+              <form>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="Username"
+                  required
+                />
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <input type="email" id="email" placeholder="Email" required />
+                <input
+                  type="text"
+                  id="dob"
+                  placeholder="Date of Birth"
+                  required
+                />
 
-                        <h1>𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐀𝐓𝐈𝐎𝐍</h1>
-
-                        <form>
-                            <input type="text" id="username" placeholder="Username" required>
-                            <input type="password" id="password" placeholder="Password" required>
-                            <input type="email" id="email" placeholder="Email" required>
-                            <input type="text" id="dob" placeholder="Date of Birth" required>
-
-                            <button type="submit">Get started ➜</button>
-                        </form>
-
-                    </div>
-
-                </div>
+                <button type="submit">Get started ➜</button>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </main>
     <div id="footer"></div>
-</body>
+  </body>
 </html>

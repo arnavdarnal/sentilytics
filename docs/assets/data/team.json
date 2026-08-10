@@ -1,22 +1,22 @@
 [
-    {
-        "name": "Abhilasha Ghimire",
-        "role": "Client-Side Validation Specialist",
-        "image": "assets/img/abhilasha-ghimire.jpg"
-    },
-    {
-        "name": "Arnav Darnal",
-        "role": "AI Integration Engineer",
-        "image": "assets/img/arnav-darnal.jpg"
-    },
-    {
-        "name": "Arya Poudel",
-        "role": "UI/UX Designer",
-        "image": "assets/img/arya-poudel.jpeg"
-    },
-    {
-        "name": "Shristi Rimal",
-        "role": "JavaScript & AJAX Developer",
-        "image": "assets/img/shristi-rimal.jpeg"
-    }
+  {
+    "name": "Abhilasha Ghimire",
+    "role": "Client-Side Validation Specialist",
+    "image": "assets/img/abhilasha-ghimire.jpg"
+  },
+  {
+    "name": "Arnav Darnal",
+    "role": "AI Integration Engineer",
+    "image": "assets/img/arnav-darnal.jpg"
+  },
+  {
+    "name": "Arya Poudel",
+    "role": "UI/UX Designer",
+    "image": "assets/img/arya-poudel.jpeg"
+  },
+  {
+    "name": "Shristi Rimal",
+    "role": "JavaScript & AJAX Developer",
+    "image": "assets/img/shristi-rimal.jpeg"
+  }
 ]
