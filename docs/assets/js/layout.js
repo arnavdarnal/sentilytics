@@ -58,25 +58,3 @@ export async function initLayout() {
       updateThemeButtons(true);
     });
   });
-
-  // Mobile hamburger menu toggle
-  const hamburger = document.getElementById("hamburgerBtn");
-  const sidebar = document.querySelector(".sidebar");
-
-  if (hamburger && sidebar) {
-    hamburger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      sidebar.style.display = sidebar.style.display === "block" ? "" : "block";
-    });
-
-    document.addEventListener("click", (e) => {
-      if (
-        sidebar.style.display === "block" &&
-        !sidebar.contains(e.target) &&
-        !hamburger.contains(e.target)
-      ) {
-        sidebar.style.display = "";
-      }
-    });
-  }
-}
