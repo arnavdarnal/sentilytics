@@ -178,7 +178,8 @@ export function initDashboard(uploadSection) {
                             <tr>
                                 <th>SN</th>
                                 <th>File</th>
-                                <th id="sortScore">Sentiment Score ↕ (Click to Sort)</th>
+                                    <th id="sortScore">Positive ▲</th>
+                                <th>Negative</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -186,7 +187,8 @@ export function initDashboard(uploadSection) {
                                 <tr>
                                     <td>${i + 1}</td>
                                     <td>${res.name}</td>
-                                    <td class="score-val">${res.score}</td>
+                                    <td class="score-val">${res.positive}</td>
+                                    <td>${res.negative}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
@@ -240,7 +242,7 @@ export function initDashboard(uploadSection) {
             });
 
             sortAscending = !sortAscending;
-            $(this).text(`Sentiment Score ${sortAscending ? '▲' : '▼'} (Click to Sort)`);
+            $(this).text(`Positive ${sortAscending ? '▲' : '▼'}`);
 
             $tbody.empty();
             $rows.forEach((row, index) => {
