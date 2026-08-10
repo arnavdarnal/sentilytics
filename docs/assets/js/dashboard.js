@@ -1,5 +1,3 @@
-import { analyzeSentiment, summarizeText } from "./inference.js";
-
 // Initialize the dashboard interface and set up event listeners for file handling and analysis
 export function initDashboard(uploadSection) {
   const MAX_FILES = 5;
@@ -100,6 +98,9 @@ export function initDashboard(uploadSection) {
 
     resultsEl.innerHTML = '<p class="status-msg" id="analysisStatus"></p>';
     const analysisStatusEl = document.getElementById("analysisStatus");
+
+    analysisStatusEl.textContent = "Loading AI model...";
+    const { analyzeSentiment, summarizeText } = await import("./inference.js");
 
     // Update progress status during analysis
     const updateProgress = (p) => {
