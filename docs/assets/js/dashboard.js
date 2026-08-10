@@ -29,7 +29,7 @@ export function initDashboard(uploadSection) {
   $resultsSection.append(resultsEl);
 
   // Handle reset functionality when the user clicks the "Analyze More" button
-  $resultsSection.on("click", "#analyzeMoreBtn", function() {
+  $resultsSection.on("click", "#analyzeMoreBtn", function () {
     uploadedFiles = [];
     fileListEl.innerHTML = "";
     if (fileInput) fileInput.value = "";
