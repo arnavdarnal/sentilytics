@@ -18,15 +18,20 @@ body.dark-mode {
 }
 
 .iconn {
-  position: fixed;
-  top: 0.9375rem;
-  right: 0.9375rem;
-  font-size: 1.5rem;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 2rem;
   z-index: 9999;
+}
+
+.iconn button {
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  font-size: inherit;
 }
 
 body {
@@ -108,12 +113,12 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 }
 
 .logo h1 {
-  font-family: "Georgia", serif;
+  font-family: "Courier New", monospace;
   font-weight: bold;
   font-size: 1.4rem;
   background-color: #1e2c53;
   color: #ffffff;
-  letter-spacing: 0.03125rem;
+  letter-spacing: 0.0625rem;
 }
 
 .drop-zone-inner {
@@ -130,12 +135,11 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   margin-bottom: 2rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
-  margin-left: -2rem;
-  width: calc(100vw - var(--sidebar-width));
+  width: 100%;
 }
 
 .container {
-  margin-top: 3.75rem;
+  margin-top: var(--header-height);
   margin-left: var(--sidebar-width);
   margin-right: 0;
   padding: 2rem;
@@ -278,6 +282,9 @@ body.feedback-page .nav-links a[href="feedback.html"] {
 }
 
 .registration-page .form-box h1 {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  letter-spacing: 0.125rem;
   margin-bottom: 3.125rem;
 }
 
@@ -343,16 +350,15 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   align-items: center;
   padding: 2.5rem;
   background-color: #b7c8cc;
-  height: 100vh;
-  margin-top: 5rem;
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
 }
 
 .feedback-card {
   background-color: #b4b39b;
   padding: 2.5rem;
   border-radius: 1.25rem;
-  margin-left: var(--sidebar-width);
-  padding-top: var(--header-height);
   text-align: center;
 }
 
@@ -596,10 +602,6 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   display: none;
 }
 
-.hamburger {
-  display: none;
-}
-
 @media (max-width: 1024px) {
   .hamburger {
     display: block;
@@ -628,16 +630,15 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   .container,
   .main-content,
   .registration-page .main-content,
-  .feedback-card,
+  .feedback-container,
   .error-container,
   #footer {
-    margin-left: 0 !important;
-    width: 100% !important;
+    margin-left: 0;
+    width: 100%;
   }
 
   .hero-slider {
-    margin-left: 0 !important;
-    width: 100% !important;
+    width: 100%;
   }
 
   .top-header {
