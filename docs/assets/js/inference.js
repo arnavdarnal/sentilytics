@@ -87,7 +87,7 @@ function chunkText(text, maxWords = 700) {
 }
 
 // Generate a condensed summary of the provided text
-export async function summarizeText(text, onProgress) {
+export async function summarizeText(text, onProgress, onStatus) {
     // Validate that input text exists and is a string
     if (!text || typeof text !== 'string') {
         return "No text provided for summarization.";
