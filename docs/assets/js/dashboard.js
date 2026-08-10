@@ -115,35 +115,35 @@ export function initDashboard(uploadSection) {
     let sentimentFailures = [];
 
     // Map each file to an asynchronous sentiment analysis task
-const analysisPromises = uploadedFiles.map(async (file) => {
-  let text;
-  try {
-    text = await file.text();
-  } catch (readErr) {
-    console.error(`Could not read file text for ${file.name}`);
-    sentimentFailures.push(file.name);
-    return;
-  }
+    const analysisPromises = uploadedFiles.map(async (file) => {
+      let text;
+      try {
+        text = await file.text();
+      } catch (readErr) {
+        console.error(`Could not read file text for ${file.name}`);
+        sentimentFailures.push(file.name);
+        return;
+      }
 
-  combinedText.push(text);
+      combinedText.push(text);
 
-  try {
-    const sentiment = await analyzeSentiment(text, updateProgress);
+      try {
+        const sentiment = await analyzeSentiment(text, updateProgress);
 
-    if (sentiment.label === "error") {
-      sentimentFailures.push(file.name);
-    } else {
-      sentimentResults.push({
-        name: file.name,
-        positive: sentiment.positive,
-        negative: sentiment.negative,
-      });
-    }
-  } catch (err) {
-    console.error(`Sentiment analysis failed for ${file.name}:`, err);
-    sentimentFailures.push(file.name);
-  }
-});
+        if (sentiment.label === "error") {
+          sentimentFailures.push(file.name);
+        } else {
+          sentimentResults.push({
+            name: file.name,
+            positive: sentiment.positive,
+            negative: sentiment.negative,
+          });
+        }
+      } catch (err) {
+        console.error(`Sentiment analysis failed for ${file.name}:`, err);
+        sentimentFailures.push(file.name);
+      }
+    });
 
     // Wait for all sentiment analysis tasks to complete before proceeding
     await Promise.all(analysisPromises);
