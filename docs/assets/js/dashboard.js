@@ -120,7 +120,7 @@ export function initDashboard(uploadSection) {
                 if (sentiment.label === 'error') {
                     sentimentFailures.push(file.name);
                 } else {
-                    sentimentResults.push({ name: file.name, score: sentiment.score });
+                    sentimentResults.push({ name: file.name, positive: sentiment.positive, negative: sentiment.negative });
                 }
             } catch (err) {
                 console.error(`Sentiment analysis failed for ${file.name}:`, err);
