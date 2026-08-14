@@ -78,7 +78,6 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   background: #92769b;
   border-left: 4px solid #4f46e5;
 }
-.nav-links a.active,
 .nav-links a:hover {
   color: white;
   background: #92769b;
@@ -292,10 +291,6 @@ body.feedback-page .nav-links a[href="feedback.html"] {
   font-weight: bold;
   letter-spacing: 0.125rem;
   margin-bottom: 3.125rem;
-}
-
-.registration-page .container h1 {
-  margin-bottom: 1.25rem;
 }
 
 .registration-page form button {
