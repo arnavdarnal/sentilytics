@@ -34,6 +34,7 @@ Alternatively, you can use any equivalent tool, such as the Live Server extensio
 
 - [`LICENSE`](LICENSE)
 - [`README.md`](README.md)
+- [`.gitattributes`](.gitattributes)
 - [`.gitignore`](.gitignore)
 - [`.prettierignore`](.prettierignore)
 - [`package.json`](package.json)
